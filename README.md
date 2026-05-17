@@ -7,13 +7,15 @@ Lightweight macOS menu-bar system monitor for Apple Silicon. Replaces Activity M
 ## Install
 
 1. Download `StatFlow.dmg` from [Releases](https://github.com/Katoru-Cattor/StatFlow/releases/latest).
-2. Open the `.dmg`, drag `StatFlow.app` to `/Applications`.
-3. **First launch:** right-click `StatFlow.app` in `/Applications` → **Open** → confirm.
+2. **Verify the download** (recommended, takes 2 seconds):
+   ```
+   shasum -a 256 ~/Downloads/StatFlow.dmg
+   ```
+   Compare the output against the `SHA256:` line in the release notes. If it doesn't match, **do not run the app** — the download may have been tampered with.
+3. Open the `.dmg`, drag `StatFlow.app` to `/Applications`.
+4. **First launch:** right-click `StatFlow.app` in `/Applications` → **Open** → confirm.
    - This is because the app is signed ad-hoc (no $99 Apple Developer cert). macOS Gatekeeper warns once; after you confirm, it never warns again.
-   - Alternative one-liner to skip the prompt:
-     ```
-     xattr -d com.apple.quarantine /Applications/StatFlow.app
-     ```
+   - Do **not** strip the quarantine flag with `xattr` — keep Gatekeeper's signature check active so future poisoned builds get caught.
 
 ## What it shows
 
